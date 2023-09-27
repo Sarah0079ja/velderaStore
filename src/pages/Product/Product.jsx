@@ -15,7 +15,7 @@ const Product = () => {
 
   const dispatch = useDispatch()
 
-  const {data, loading,error} = useFetch(
+  const {data, loading} = useFetch(
     `/products/${id}?populate=*`
   );     
 
