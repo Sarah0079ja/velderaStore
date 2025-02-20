@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/velderaStore/static/css/main.24b39a5e.css",
+    "main.js": "/velderaStore/static/js/main.95850780.js",
+    "static/js/787.c4e7f8f9.chunk.js": "/velderaStore/static/js/787.c4e7f8f9.chunk.js",
+    "index.html": "/velderaStore/index.html",
+    "main.24b39a5e.css.map": "/velderaStore/static/css/main.24b39a5e.css.map",
+    "main.95850780.js.map": "/velderaStore/static/js/main.95850780.js.map",
+    "787.c4e7f8f9.chunk.js.map": "/velderaStore/static/js/787.c4e7f8f9.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.24b39a5e.css",
+    "static/js/main.95850780.js"
+  ]
+}
