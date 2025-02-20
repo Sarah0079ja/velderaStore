@@ -23,4 +23,49 @@
         justify-content: center;
         gap:50px;
     }
+
+       
+       
+        
 }
+ @media screen and (max-width: 767px) {
+     .featuredproducts {
+         margin: 15px; // Adjust margins for smaller screens
+
+         .top {
+             flex-direction: column; // Stack elements vertically on mobile
+             align-items: center; // Align items to the start
+            margin-bottom: 10px; // Reduce margin for spacing
+
+             h1 {
+                 text-align: center; // Align the heading to the left
+             }
+
+             p {
+                 text-align: center; // Align the paragraph to the left
+             }
+         }
+
+         .bottom {
+             flex-direction: column;
+            align-items: center; // Stack elements vertically on mobile
+             justify-content: center; // Align items to the start
+            gap: 10px; // Reduce the gap between elements
+         }
+     }
+ }
+
+ @media screen and (min-width: 768px) and (max-width: 1024px) {
+     .featuredproducts {
+         margin: 50px 100px; // You can adjust margins for iPad screens
+
+         .top {
+             margin-bottom: 30px; // You can adjust the margin as needed
+         }
+
+         .bottom {
+             gap: 10px;
+            // You can adjust the gap between elements on iPad screens
+         }
+     }
+ }

@@ -4,24 +4,81 @@ import SearchIcon from '@mui/icons-material/Search';
 import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
+import MenuIcon from "@mui/icons-material/Menu";
+import IconButton from "@mui/material/IconButton";
 import { Link } from 'react-router-dom';
+import{ Box, ListItem, ListItemButton,Typography, List, ListItemText, CssBaseline}from "@mui/material";
+import {AppBar, Drawer, Toolbar, Divider,Button} from '@mui/material'
 import './Navbar.scss'
 import Cart from '../Cart/Cart';
+// import PropTypes from "prop-types";
+import menuData from './data';
+import menuData1 from "./data1";
+import menuData2 from "./data2";
 import { useSelector } from 'react-redux/es/hooks/useSelector';
 
 
-const Navbar = () => {
+const drawerWidth = 240;
+
+const Navbar = (props) => {
+    const {window} = props;
     const [open, setOpen] = useState(false)
     const products = useSelector((state) => state.cart.products);
+    const [mobileOpen, setMobileOpen] = useState(false);
+
+    const handleDrawerToggle = () => {
+      setMobileOpen((prevState) => !prevState);
+    };
+
+    
+  const drawer = (
+    <Box
+      onClick={handleDrawerToggle}
+      sx={{ textAlign: "center" }}
+      md={{ textAlign: "center" }}
+    >
+      <Typography variant="h6" sx={{ my: 2 }}>
+        VELDERA
+      </Typography>
+      <Divider />
+      <List>
+        {menuData.map((menuItem, index) => (
+          <ListItem key={index} disablePadding className="item">
+            <ListItemButton sx={{ textAlign: "start" }} >
+              <ListItemText key={index} className="link">
+                <Link to={menuItem.path}>{menuItem.name}</Link>
+              </ListItemText>
+            </ListItemButton>
+          </ListItem>
+        ))}
+      </List>
+
+      
+    </Box>
+  );
+
+    const container =
+      window !== undefined ? () => window().document.body : undefined;
 
     const handleClick = () => {
         setOpen(!false)
     }
 
   return (
-    <div className="navbar">
-      <div className="wrapper">
+    <Box className="navbar" sx={{ display: "flex" }}>
+      <CssBaseline />
+      <div className="wrapper" component="nav">
+        {/* <Toolbar> */}
         <div className="left">
+          <IconButton
+            color="inherit"
+            aria-label="open drawer"
+            edge="start"
+            onClick={handleDrawerToggle}
+            sx={{ mr: 2, display: { sm: "none" } }}
+          >
+            <MenuIcon />
+          </IconButton>
           <div className="item">
             <img src="img/en.png" alt="" />
             <KeyboardArrowDownIcon />
@@ -30,21 +87,16 @@ const Navbar = () => {
             <span>USD</span>
             <KeyboardArrowDownIcon />
           </div>
-          <div className="item">
-            <Link className="link" to="/products/1">
-              Women
-            </Link>
-          </div>
-          <div className="item">
-            <Link className="link" to="/products/1">
-              Men
-            </Link>
-          </div>
-          <div className="item">
-            <Link className="link" to="/products/1">
-              Children
-            </Link>
-          </div>
+
+          <Box sx={{ display: { xs: "none", sm: "block" } }}>
+            {menuData1.map((menuItem, index) => (
+              <Button key={index} sx={{ color: "#000003" }}>
+                <Link to={menuItem.path} className="link">
+                  {menuItem.name}
+                </Link>
+              </Button>
+            ))}
+          </Box>
         </div>
         <div className="center">
           <Link className="link" to="/">
@@ -53,27 +105,19 @@ const Navbar = () => {
         </div>
 
         <div className="right">
-          <div className="item">
-            <Link className="link" to="/">
-              HomePage
-            </Link>
-          </div>
-          <div className="item">
-            <Link className="link" to="/">
-              About
-            </Link>
-          </div>
-          <div className="item">
-            <Link className="link" to="/">
-              Contact
-            </Link>
-          </div>
-          <div className="item">
-            <Link className="link" to="/">
-              Stores
-            </Link>
-          </div>
-          <div className="icons">
+          <List>
+            <Box sx={{ display: { xs: "none", sm: "block" } }}>
+              {menuData2.map((menuItem, index) => (
+                <Button key={index} sx={{ color: "#000003" }}>
+                  <Link to={menuItem.path} className="link">
+                    {menuItem.name}
+                  </Link>
+                </Button>
+              ))}
+            </Box>
+          </List>
+
+          <div className="icons" sx={{ display: { xs: "none", sm: "block" } }}>
             <SearchIcon />
             <PersonOutlineIcon />
             <FavoriteBorderIcon />
@@ -83,10 +127,31 @@ const Navbar = () => {
             </div>
           </div>
         </div>
+        <nav>
+          <Drawer
+            container={container}
+            variant="temporary"
+            open={mobileOpen}
+            onClose={handleDrawerToggle}
+            ModalProps={{
+              keepMounted: true, // Better open performance on mobile.
+            }}
+            sx={{
+              display: { xs: "block", sm: "none" },
+              "& .MuiDrawer-paper": {
+                boxSizing: "border-box",
+                width: drawerWidth,
+              },
+            }}
+          >
+            {drawer}
+          </Drawer>
+        </nav>
+        {/* </Toolbar> */}
       </div>
+
       {open && <Cart />}
-     
-    </div>
+    </Box>
   );
 }
 

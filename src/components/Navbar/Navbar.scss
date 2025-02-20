@@ -1,6 +1,7 @@
  .navbar{
-    height:80px;
-
+    height:100px;
+     justify-content: center;
+    
     .wrapper{
         padding: 10px 30px;
         display: flex;
@@ -17,19 +18,25 @@
             display: flex;
             align-items: center;
             gap:25px;
+            justify-content: left;
+            // margin-left: 40px;
         }
         .center{
             font-size: 30px ;
+            margin-left: 40px;
+            margin-right: 40px;
         }
         .right{
             display: flex;
             align-items: center;
             gap: 25px;
+            justify-content: right;
         }.icons{
             display: flex;
             cursor: pointer;
             gap: 15px;
-            color:#777
+            color:#777;
+            margin-left: 50px;
         }
         .cartIcon{
             position: relative;
@@ -50,4 +57,39 @@
             }
         }
     }
+ }
+
+ @media screen and (max-width: 767px) {
+     .navbar {  
+            height: 100px;
+            width: 100%;
+            display: column;
+                
+         .wrapper {
+            padding: 10px ;
+            
+            flex-direction: flex;
+            align-items: center;
+         
+            .item {
+                    display: flex;
+                    align-items: start;
+                    font-size: 18px;
+            }
+
+            // .center{
+            //     margin-right: 10px;
+            // }
+            .left {
+                display: flex;
+                align-items: center;
+                
+            }
+           
+            
+         }
+        
+         
+     }
+
  }

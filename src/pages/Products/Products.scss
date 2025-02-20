@@ -41,3 +41,50 @@
        }
     }
 }
+
+@media screen and (max-width:767px) {
+    .products {
+            flex-direction: column;
+            padding: 15px 25px;
+    
+    
+            .left {
+                flex: 1;
+                position: sticky;
+                height: 100%;
+                top: 50px;
+    
+                .filterItem {
+                    margin-bottom: 30px;
+    
+                    h2 {
+                        font-weight: 400;
+                        margin-bottom: 20px;
+                    }
+    
+                    input {
+                        margin-bottom: 10px;
+    
+                        label {
+                            margin-left: 10px;
+                        }
+    
+                    }
+                }
+            }
+    
+            .right {
+    
+                flex: 3;
+    
+                .catImg {
+                    width: 100%;
+                    height: 300px;
+                    object-fit: cover;
+                    margin-bottom: 50px;
+    
+    
+                }
+            }
+        }
+}
